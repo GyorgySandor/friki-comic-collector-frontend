@@ -1,15 +1,18 @@
 import React from "react";
+import LoginButton from "./Buttons/LoginButton";
 
-export default function Header() {
+function Header() {
   return (
     <header style={headerStyle}>
       <div>Friki - comic collection app</div>
-      <button>login</button>
+      <LoginButton />
       <button>my collection</button>
       <button>market place</button>
     </header>
   );
 }
+
+export default Header;
 
 const headerStyle = {
   margin: " 16px auto",
