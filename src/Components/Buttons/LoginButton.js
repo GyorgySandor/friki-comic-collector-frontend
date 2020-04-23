@@ -1,11 +1,12 @@
 import React from "react";
 
-function LoginButton() {
-  return <button style={loginButtonStyle}>Login</button>;
+function LoginButton(props) {
+  return <button style={loginButtonStyle}>{props.label}</button>;
 }
 
 export default LoginButton;
 
 const loginButtonStyle = {
   float: "left",
+  margin: "2px",
 };
