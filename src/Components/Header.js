@@ -5,7 +5,7 @@ import MenuButton from "./Buttons/MenuOptionButton";
 function Header() {
   return (
     <header style={headerStyle}>
-      <div>Friki - comic collection app</div>
+      <div>Friki - Comic Collector</div>
       <div>
         <LoginButton label="Login" />
         <MenuButton label="My Collection" />
@@ -22,7 +22,8 @@ const headerStyle = {
   width: "60%",
   height: "40px",
   backgrondColor: "green",
-  border: "3px solid yellow",
+  border: "3px solid black",
   padding: "8px",
   cursor: "pointer",
+  boxShadow: "0 2px 3px #ccc",
 };
