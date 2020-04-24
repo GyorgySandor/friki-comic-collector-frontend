@@ -24,6 +24,5 @@ const headerStyle = {
   backgrondColor: "green",
   border: "3px solid black",
   padding: "8px",
-  cursor: "pointer",
   boxShadow: "0 2px 3px #ccc",
 };
