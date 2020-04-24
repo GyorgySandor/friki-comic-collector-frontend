@@ -4,7 +4,7 @@ function SearchBox() {
   return (
     <div>
       <p>Looking for something?</p>
-      <input type={text} />
+      <input type="text" />
     </div>
   );
 }
