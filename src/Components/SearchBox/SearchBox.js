@@ -1,10 +1,12 @@
 import React from "react";
+import ItemList from "../ListingViews/ItemList";
 
 function SearchBox() {
   return (
     <div className="searchbox" style={searchBoxStyle}>
       <p>Looking for something?</p>
       <input type="text" />
+      <ItemList />
     </div>
   );
 }
