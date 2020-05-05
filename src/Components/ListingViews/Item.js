@@ -10,6 +10,10 @@ function Item(props) {
 
 const itemStyle = {
   backgrondColor: "green",
+  border: "1px",
+  padding: "1px",
+  backgroundColor: "#90EE90",
+  margin: " 6px auto",
 };
 
 export default Item;

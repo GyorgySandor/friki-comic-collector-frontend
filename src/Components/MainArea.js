@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import SearchBox from "./SearchBox/SearchBox";
 import ItemList from "./ListingViews/ItemList";
 
@@ -16,7 +15,7 @@ export class MainArea extends Component {
     return (
       <div className="main-area" style={mainAreaStyle}>
         <SearchBox />
-        <ItemList />
+        <ItemList items={this.state.items} />
       </div>
     );
   }

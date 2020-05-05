@@ -1,9 +1,15 @@
 import React from "react";
+import Item from "./Item";
 
 function ItemList(props) {
   return (
     <div class="item-list" style={itemListStyle}>
       <p style={listHeaderStyle}>Search Results:</p>
+      <div>
+        {props.items.map((item) => {
+          return <Item name={item.name} />;
+        })}
+      </div>
     </div>
   );
 }
