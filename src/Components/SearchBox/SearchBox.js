@@ -1,5 +1,4 @@
 import React from "react";
-import ItemList from "../ListingViews/ItemList";
 
 function SearchBox() {
   return (

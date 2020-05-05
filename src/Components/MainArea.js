@@ -4,7 +4,13 @@ import SearchBox from "./SearchBox/SearchBox";
 import ItemList from "./ListingViews/ItemList";
 
 export class MainArea extends Component {
-  static propTypes = {};
+  state = {
+    items: [
+      { name: "Amazing Spider-Man" },
+      { name: "The Incredible Hulk" },
+      { name: "Unchanny X-Men" },
+    ],
+  };
 
   render() {
     return (
