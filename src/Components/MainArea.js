@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import SearchBox from "./SearchBox/SearchBox";
 import ItemList from "./ListingViews/ItemList";
-import axios from "axios";
+import Axios from "axios";
 
-const CV_Key = process.env.REACT_APP_COMICVINE_API_KEY;
+const CVKey = process.env.REACT_APP_COMICVINE_API_KEY;
+const CVbaseUrl =
+  "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/issues/";
 
 export class MainArea extends Component {
   state = {
@@ -14,8 +16,18 @@ export class MainArea extends Component {
     ],
   };
 
+  async componentDidMount() {
+    Axios.get(CVbaseUrl, {
+      params: {
+        api_key: CVKey,
+        format: "json",
+      },
+    }).then((res) => {
+      console.log(res);
+    });
+  }
+
   render() {
-    //console.log(CV_Key);
     return (
       <div className="main-area" style={mainAreaStyle}>
         <SearchBox />
