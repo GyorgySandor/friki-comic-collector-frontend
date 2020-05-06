@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import SearchBox from "./SearchBox/SearchBox";
 import ItemList from "./ListingViews/ItemList";
+import axios from "axios";
+
+const CV_Key = process.env.REACT_APP_COMICVINE_API_KEY;
 
 export class MainArea extends Component {
   state = {
@@ -12,6 +15,7 @@ export class MainArea extends Component {
   };
 
   render() {
+    //console.log(CV_Key);
     return (
       <div className="main-area" style={mainAreaStyle}>
         <SearchBox />
