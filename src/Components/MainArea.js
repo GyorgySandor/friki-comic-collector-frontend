@@ -3,9 +3,21 @@ import SearchBox from "./SearchBox/SearchBox";
 import ItemList from "./ListingViews/ItemList";
 import Axios from "axios";
 
+/**api documentation at:
+ * https://comicvine.gamespot.com/api/documentation
+ * general usage:
+ * params:
+ * -api_key
+ * -format: json/xml/jsonp
+ * -limit: number of items the reguest
+ * -offset: offset the items in the reguest guery
+ * -filed_list: list of fields the receive from each given object
+ * for more details see the documentation
+ */
+
 const CVKey = process.env.REACT_APP_COMICVINE_API_KEY;
 const CVbaseUrl =
-  "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/issues/";
+  "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/";
 
 export class MainArea extends Component {
   state = {
@@ -21,9 +33,16 @@ export class MainArea extends Component {
       params: {
         api_key: CVKey,
         format: "json",
+        limit: 10,
+        //field_list: "name",
+        query: "spider-man",
+        resources: "volume",
+        resource_type: "volume",
+        offset: 0,
       },
     }).then((res) => {
       console.log(res);
+      this.setState({ items: res.data.results });
     });
   }
 
