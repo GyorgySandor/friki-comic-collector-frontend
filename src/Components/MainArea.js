@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SearchBox from "./SearchBox/SearchBox";
 import ItemList from "./ListingViews/ItemList";
-import Axios from "axios";
+import API from "../Components/API/API";
 
 /**api documentation at:
  * https://comicvine.gamespot.com/api/documentation
@@ -16,8 +16,6 @@ import Axios from "axios";
  */
 
 const CVKey = process.env.REACT_APP_COMICVINE_API_KEY;
-const CVbaseUrl =
-  "https://cors-anywhere.herokuapp.com/https://comicvine.gamespot.com/api/search/";
 
 export class MainArea extends Component {
   state = {
@@ -28,6 +26,7 @@ export class MainArea extends Component {
     ],
   };
 
+  /*
   async componentDidMount() {
     Axios.get(CVbaseUrl, {
       params: {
@@ -44,6 +43,25 @@ export class MainArea extends Component {
       console.log(res);
       this.setState({ items: res.data.results });
     });
+  }
+  */
+
+  async componentDidMount() {
+    let resultSet = await API.get("/search", {
+      params: {
+        api_key: CVKey,
+        format: "json",
+        limit: 10,
+        //field_list: "name",
+        query: "spider-man",
+        resources: "volume",
+        resource_type: "volume",
+        offset: 0,
+      },
+    });
+
+    this.setState({ items: resultSet.data.results });
+    console.log(resultSet);
   }
 
   render() {
