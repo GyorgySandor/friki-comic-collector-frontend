@@ -17,17 +17,23 @@ const CVbaseUrl =
 const CVKey = process.env.REACT_APP_COMICVINE_API_KEY;
 
 export default {
-  getSearchResults: (endpoint) => {
+  /**
+   * @param endpoint the endpoint of the api to target e.g 'search','volume','issue'
+   * @param limit the number of items to receive
+   * @param offset return results from the offset
+   * @param filterFiled the result field to filter by
+   * @param filterValue the result field value to filter by
+   */
+  getSearchResults: (endpoint, limit, offset, filterField, filterVale) => {
     return axios.get(CVbaseUrl + endpoint + "/", {
       params: {
         api_key: CVKey,
         format: "json",
-        limit: 10,
-        //field_list: "name",
-        offset: 10,
-        query: "dark horse",
-        resources: "volume",
-        resource_type: "volume",
+        filter: filterField + "=" + filterVale,
+        limit: limit,
+        offset: offset,
+        field_list: "name,id,publisher",
+        //resource_type: "volume",
       },
     });
   },

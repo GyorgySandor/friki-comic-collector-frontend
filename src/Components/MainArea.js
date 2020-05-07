@@ -10,11 +10,17 @@ export class MainArea extends Component {
       { name: "The Incredible Hulk" },
       { name: "Unchanny X-Men" },
     ],
-    endpoint: "search",
+    endpoint: "volumes",
   };
 
   async componentDidMount() {
-    let resultSet = await API.getSearchResults(this.state.endpoint);
+    let resultSet = await API.getSearchResults(
+      this.state.endpoint,
+      10,
+      10,
+      "name",
+      "spider-man"
+    );
     this.setState({ items: resultSet.data.results });
     console.log(resultSet);
   }
