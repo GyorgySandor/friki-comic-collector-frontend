@@ -29,7 +29,7 @@ export default {
       params: {
         api_key: CVKey,
         format: "json",
-        filter: filterField + "=" + filterVale,
+        filter: filterField + ":" + filterVale,
         limit: limit,
         offset: offset,
         field_list: "name,id,publisher",

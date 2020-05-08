@@ -6,9 +6,9 @@ import API from "../Components/API/API";
 export class MainArea extends Component {
   state = {
     items: [
-      { name: "Amazing Spider-Man" },
-      { name: "The Incredible Hulk" },
-      { name: "Unchanny X-Men" },
+      /*{ name: "Amazing Spider-Man", id: 1 },
+      { name: "The Incredible Hulk", id: 2 },
+      { name: "Unchanny X-Men", id: 3 },*/
     ],
     endpoint: "volumes",
   };
@@ -16,10 +16,10 @@ export class MainArea extends Component {
   async componentDidMount() {
     let resultSet = await API.getSearchResults(
       this.state.endpoint,
-      10,
-      10,
+      100,
+      20,
       "name",
-      "spider-man"
+      "Punisher"
     );
     this.setState({ items: resultSet.data.results });
     console.log(resultSet);

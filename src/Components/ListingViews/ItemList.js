@@ -3,11 +3,11 @@ import Item from "./Item";
 
 function ItemList(props) {
   return (
-    <div class="item-list" style={itemListStyle}>
+    <div className="item-list" style={itemListStyle}>
       <p style={listHeaderStyle}>Search Results:</p>
       <div>
         {props.items.map((item) => {
-          return <Item name={item.name} />;
+          return <Item key={item.id} name={item.name} />;
         })}
       </div>
     </div>
