@@ -11,6 +11,7 @@ export class MainArea extends Component {
       { name: "Unchanny X-Men", id: 3 },*/
     ],
     endpoint: "volumes",
+    searchedName: "Hellboy",
   };
 
   async componentDidMount() {
@@ -19,7 +20,7 @@ export class MainArea extends Component {
       100,
       20,
       "name",
-      "Punisher"
+      this.state.searchedName
     );
     this.setState({ items: resultSet.data.results });
     console.log(resultSet);
