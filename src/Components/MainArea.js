@@ -12,7 +12,18 @@ export class MainArea extends Component {
     ],
     endpoint: "volumes",
     searchedName: "Hellboy",
+    submitName: "Hellboy",
   };
+
+  handleSubmit() {
+    this.setState({ submitName: this.state.searchedName });
+    console.log(this.state.submitName);
+  }
+
+  handleChange(event) {
+    this.setState({ searchedName: event.target.value });
+    console.log(event.target.value);
+  }
 
   async componentDidMount() {
     let resultSet = await API.getSearchResults(
@@ -29,7 +40,11 @@ export class MainArea extends Component {
   render() {
     return (
       <div className="main-area" style={mainAreaStyle}>
-        <SearchBox />
+        <SearchBox
+          searchParam={this.state.searchedName}
+          change={(event) => this.handleChange(event)}
+          submit={this.handleSubmit}
+        />
         <ItemList items={this.state.items} />
       </div>
     );

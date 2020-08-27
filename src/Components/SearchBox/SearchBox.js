@@ -1,10 +1,19 @@
 import React from "react";
 
-function SearchBox() {
+function SearchBox(props) {
   return (
     <div className="searchbox" style={searchBoxStyle}>
-      <p>Looking for something?</p>
-      <input type="text" />
+      <form onSubmit={props.submit}>
+        <label>
+          Search:
+          <input
+            type="text"
+            value={props.searchParam}
+            onChange={props.change}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
     </div>
   );
 }
