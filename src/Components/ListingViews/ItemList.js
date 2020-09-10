@@ -10,6 +10,10 @@ function ItemList(props) {
           return <Item key={item.id} name={item.name} />;
         })}
       </div>
+      <div>
+        <button style={right}>next</button>
+        <button style={left}>previous</button>
+      </div>
     </div>
   );
 }
@@ -22,6 +26,7 @@ const itemListStyle = {
   border: "3px solid black",
   padding: "8px",
   boxShadow: "0 2px 3px #ccc",
+  overflow: "auto",
 };
 
 const listHeaderStyle = {
@@ -29,4 +34,11 @@ const listHeaderStyle = {
   backgroundColor: "black",
 };
 
+const right = {
+  float: "right",
+};
+
+const left = {
+  float: "left",
+};
 export default ItemList;

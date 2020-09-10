@@ -8,6 +8,7 @@ export class MainArea extends Component {
     items: [],
     endpoint: "volumes",
     searchWorld: "",
+    offset: 100,
   };
   /* 
   async componentDidMount() {
@@ -31,7 +32,7 @@ export class MainArea extends Component {
     let resultSet = await API.getSearchResults(
       this.state.endpoint,
       100,
-      20,
+      this.state.offset,
       "name",
       this.state.searchWorld
     );
