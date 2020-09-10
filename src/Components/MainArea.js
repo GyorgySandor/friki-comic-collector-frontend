@@ -39,6 +39,14 @@ export class MainArea extends Component {
     this.setState({ items: resultSet.data.results });
   };
 
+  searchPageNextHandler = () => {
+    this.setState({ offset: this.state.offset + 100 });
+  };
+
+  searchPagePreviousHandler = () => {
+    this.setState({ offset: this.state.offset - 100 });
+  };
+
   render() {
     return (
       <div className="main-area" style={mainAreaStyle}>
@@ -46,7 +54,11 @@ export class MainArea extends Component {
           submit={this.searchChangeHandler}
           change={this.handleSearchFieldChange}
         />
-        <ItemList items={this.state.items} />
+        <ItemList
+          items={this.state.items}
+          next={this.searchPageNextHandler}
+          previous={this.searchPagePreviousHandler}
+        />
       </div>
     );
   }

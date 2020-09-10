@@ -11,8 +11,12 @@ function ItemList(props) {
         })}
       </div>
       <div>
-        <button style={right}>next</button>
-        <button style={left}>previous</button>
+        <button style={right} onClick={props.next}>
+          next
+        </button>
+        <button style={left} onClick={props.previous}>
+          previous
+        </button>
       </div>
     </div>
   );
