@@ -4,14 +4,8 @@ function SearchBox(props) {
   return (
     <div className="searchbox" style={searchBoxStyle}>
       <form onSubmit={props.submit}>
-        <label>
-          Search:
-          <input
-            type="text"
-            value={props.searchParam}
-            onChange={props.change}
-          />
-        </label>
+        Search:
+        <input type="text" onChange={props.change} />
         <input type="submit" value="Submit" />
       </form>
     </div>
