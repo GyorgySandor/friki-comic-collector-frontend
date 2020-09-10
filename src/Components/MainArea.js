@@ -8,7 +8,7 @@ export class MainArea extends Component {
     items: [],
     endpoint: "volumes",
     searchWorld: "",
-    offset: 100,
+    offset: 0,
   };
   /* 
   async componentDidMount() {
@@ -39,12 +39,14 @@ export class MainArea extends Component {
     this.setState({ items: resultSet.data.results });
   };
 
-  searchPageNextHandler = () => {
+  searchPageNextHandler = (event) => {
     this.setState({ offset: this.state.offset + 100 });
+    this.searchChangeHandler(event);
   };
 
-  searchPagePreviousHandler = () => {
+  searchPagePreviousHandler = (event) => {
     this.setState({ offset: this.state.offset - 100 });
+    this.searchChangeHandler(event);
   };
 
   render() {
