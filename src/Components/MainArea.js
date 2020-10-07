@@ -10,29 +10,24 @@ export class MainArea extends Component {
     searchWorld: "",
     offset: 0,
   };
-  /* 
-  async componentDidMount() {
-    let resultSet = await API.getSearchResults(
-      this.state.endpoint,
-      100,
-      20,
-      "name",
-      this.state.searchWorld
-    );
-    this.setState({ items: resultSet.data.results });
-    console.log(resultSet);
-  } */
 
   handleSearchFieldChange = (event) => {
     this.setState({ searchWorld: event.target.value });
   };
 
-  searchChangeHandler = async (event) => {
+  searchChangeHandler = async (event, offSet) => {
+    let newOffset = "";
+
+    if (offSet === undefined) {
+      newOffset = this.state.offset;
+    } else {
+      newOffset = offSet;
+    }
     event.preventDefault();
     let resultSet = await API.getSearchResults(
       this.state.endpoint,
       100,
-      this.state.offset,
+      newOffset,
       "name",
       this.state.searchWorld
     );
@@ -40,13 +35,17 @@ export class MainArea extends Component {
   };
 
   searchPageNextHandler = (event) => {
-    this.setState({ offset: this.state.offset + 100 });
-    this.searchChangeHandler(event);
+    const newOffset = this.state.offset + 100;
+    this.setState({ offset: newOffset });
+    this.searchChangeHandler(event, newOffset);
+    console.log(this.state);
   };
 
   searchPagePreviousHandler = (event) => {
-    this.setState({ offset: this.state.offset - 100 });
-    this.searchChangeHandler(event);
+    const newOffset = this.state.offset - 100;
+    this.setState({ offset: newOffset });
+    this.searchChangeHandler(event, newOffset);
+    console.log(this.state);
   };
 
   render() {
