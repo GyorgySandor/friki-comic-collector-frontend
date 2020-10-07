@@ -5,31 +5,61 @@ import API from "../Components/API/API";
 
 export class MainArea extends Component {
   state = {
-    items: [
-      /*{ name: "Amazing Spider-Man", id: 1 },
-      { name: "The Incredible Hulk", id: 2 },
-      { name: "Unchanny X-Men", id: 3 },*/
-    ],
+    items: [],
     endpoint: "volumes",
+    searchWorld: "",
+    offset: 0,
   };
 
-  async componentDidMount() {
+  handleSearchFieldChange = (event) => {
+    this.setState({ searchWorld: event.target.value });
+  };
+
+  searchChangeHandler = async (event, offSet) => {
+    let newOffset = "";
+
+    if (offSet === undefined) {
+      newOffset = this.state.offset;
+    } else {
+      newOffset = offSet;
+    }
+    event.preventDefault();
     let resultSet = await API.getSearchResults(
       this.state.endpoint,
       100,
-      20,
+      newOffset,
       "name",
-      "Punisher"
+      this.state.searchWorld
     );
     this.setState({ items: resultSet.data.results });
-    console.log(resultSet);
-  }
+  };
+
+  searchPageNextHandler = (event) => {
+    const newOffset = this.state.offset + 100;
+    this.setState({ offset: newOffset });
+    this.searchChangeHandler(event, newOffset);
+    console.log(this.state);
+  };
+
+  searchPagePreviousHandler = (event) => {
+    const newOffset = this.state.offset - 100;
+    this.setState({ offset: newOffset });
+    this.searchChangeHandler(event, newOffset);
+    console.log(this.state);
+  };
 
   render() {
     return (
       <div className="main-area" style={mainAreaStyle}>
-        <SearchBox />
-        <ItemList items={this.state.items} />
+        <SearchBox
+          submit={this.searchChangeHandler}
+          change={this.handleSearchFieldChange}
+        />
+        <ItemList
+          items={this.state.items}
+          next={this.searchPageNextHandler}
+          previous={this.searchPagePreviousHandler}
+        />
       </div>
     );
   }
