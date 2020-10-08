@@ -32,7 +32,7 @@ export default {
         filter: filterField + ":" + filterVale,
         limit: limit,
         offset: offset,
-        field_list: "name,id,publisher",
+        field_list: "name,id,publisher,site_detail_url",
         //resource_type: "volume",
       },
     });

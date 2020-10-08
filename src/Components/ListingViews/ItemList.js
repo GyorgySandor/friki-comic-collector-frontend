@@ -1,5 +1,5 @@
 import React from "react";
-import Item from "./Item";
+import Item from "./Item/Item";
 
 function ItemList(props) {
   return (
@@ -7,6 +7,7 @@ function ItemList(props) {
       <p style={listHeaderStyle}>Search Results:</p>
       <div>
         {props.items.map((item) => {
+          console.log(item);
           return <Item key={item.id} name={item.name} />;
         })}
       </div>

@@ -19,7 +19,7 @@ export default Header;
 
 const headerStyle = {
   margin: " 16px auto",
-  width: "60%",
+  width: "auto",
   height: "40px",
   backgrondColor: "green",
   border: "3px solid black",
